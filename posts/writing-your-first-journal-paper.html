@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ══ EDIT: update title, description for each post ══ -->
+<title>Post Title Here | Dr. Your Name</title>
+<meta name="description" content="A short one-line description of this post for search engines." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.17.0/tabler-icons.min.css" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-brand">Dr. Your Name</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#publications">Publications</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../index.html#talks">Talks</a></li>
+    <li><a href="../index.html#teaching">Teaching</a></li>
+    <li><a href="../index.html#posts" class="active">Blog</a></li>
+  </ul>
+  <a href="../files/cv.pdf" class="nav-cv" target="_blank" rel="noopener">Download CV</a>
+</nav>
+
+<!-- POST CONTENT -->
+<article class="post-page">
+
+  <!-- Back link -->
+  <a href="../index.html#posts" class="back-link">
+    <i class="ti ti-arrow-left" style="font-size:13px"></i> All Posts
+  </a>
+
+  <!-- ══ EDIT: update tag, date, read time ══ -->
+  <div class="post-page-meta">
+    <span class="post-page-tag">Natural Language Processing</span>
+    <span class="post-page-date">March 2025</span>
+    <span class="post-page-read">12 min read</span>
+  </div>
+
+  <!-- ══ EDIT: post title ══ -->
+  <h1>Why Every AI Researcher Should Learn Indonesian NLP</h1>
+
+  <!-- ══ EDIT: one-sentence intro shown as italic pull quote ══ -->
+  <p class="post-intro">
+    The rich morphological structure of Bahasa Indonesia makes it a uniquely challenging
+    and rewarding testbed for modern NLP methods — and an underexplored opportunity for the global research community.
+  </p>
+
+  <!-- ══ EDIT: optional table of contents ══ -->
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-label">Contents</p>
+    <ol>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#why-indonesian">Why Indonesian Is Interesting</a></li>
+      <li><a href="#challenges">Key Challenges</a></li>
+      <li><a href="#current-work">Current Work and Tools</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       EDIT: write your post body below.
+       Use <h2> for main sections, <h3> for subsections.
+       Use <p> for paragraphs.
+       Use <pre><code> for code blocks.
+       Use <blockquote> for quotes.
+       Use <ul>/<ol> for lists.
+       Each <h2> id="" must match the TOC href above.
+  ══════════════════════════════════════════ -->
+  <div class="post-body">
+
+    <h2 id="introduction">Introduction</h2>
+
+    <p>
+      When researchers talk about low-resource NLP, they often mean languages with fewer than a few hundred thousand
+      training samples. Bahasa Indonesia, with over 270 million speakers and a rapidly growing digital footprint,
+      is not technically "low-resource" in terms of raw data. Yet it remains severely underrepresented in
+      benchmark datasets, pre-trained models, and international publications.
+    </p>
+
+    <p>
+      This is a missed opportunity — not just for Indonesian researchers, but for the entire NLP community.
+      Indonesian has structural properties that stress-test modern architectures in ways that English simply cannot,
+      making it an ideal language for probing the limits of current approaches.
+    </p>
+
+    <h2 id="why-indonesian">Why Indonesian Is Interesting</h2>
+
+    <p>
+      Unlike English, Indonesian is an agglutinative language — words are formed by combining a root with
+      affixes that carry grammatical meaning. The word <code>mempertanggungjawabkan</code> is a single token
+      composed of four morphemes: a causative prefix, a root, and two suffixes. Tokenizing this correctly
+      requires morphological awareness that most subword tokenizers were not designed for.
+    </p>
+
+    <blockquote>
+      "Most tokenizers were designed by English-speaking engineers, for English-speaking use cases.
+      The diversity of world languages demands we revisit these assumptions."
+    </blockquote>
+
+    <p>
+      Furthermore, colloquial Indonesian (used in social media, messaging, and everyday speech) diverges
+      significantly from the formal register used in official documents and textbooks. A model trained
+      on formal text will frequently fail on informal inputs, making domain adaptation a first-class problem.
+    </p>
+
+    <h2 id="challenges">Key Challenges</h2>
+
+    <p>Three areas deserve particular attention:</p>
+
+    <ul>
+      <li><strong>Morphological complexity:</strong> Affixation rules interact with phonological constraints in non-trivial ways.</li>
+      <li><strong>Code-switching:</strong> Indonesian speakers frequently mix Bahasa Indonesia with English, Javanese, or local dialects.</li>
+      <li><strong>Benchmark scarcity:</strong> High-quality annotated datasets for tasks like NER, coreference, and discourse parsing remain rare.</li>
+    </ul>
+
+    <h2 id="current-work">Current Work and Tools</h2>
+
+    <p>
+      The situation is improving. Several efforts have produced useful baselines. IndoBERT, released in 2020,
+      provided a pre-trained BERT model for Indonesian. More recently, community-driven projects have
+      produced larger corpora, better tokenizers, and task-specific fine-tuned models.
+    </p>
+
+    <p>
+      In our lab, we have been working on <strong>IndoNLP Toolkit</strong>, an open-source library that
+      consolidates these resources into a single, production-ready pipeline. Here is a simple usage example:
+    </p>
+
+    <pre><code>from indonlp import pipeline
+
+nlp = pipeline("ner", model="indonlp/indobert-base-ner")
+result = nlp("Budi Santoso bekerja di Universitas Brawijaya di Malang.")
+print(result)
+# [{'entity': 'B-PER', 'word': 'Budi'}, {'entity': 'I-PER', 'word': 'Santoso'}, ...]</code></pre>
+
+    <p>
+      The library handles tokenization, morphological normalization, and model inference in a single call,
+      making it easy to integrate into downstream applications.
+    </p>
+
+    <h2 id="conclusion">Conclusion</h2>
+
+    <p>
+      Indonesian NLP is not a niche specialty — it is a proving ground for ideas that will matter across
+      all agglutinative and morphologically rich languages. Researchers who invest in understanding it
+      will find themselves with insights that transfer broadly, and with an opportunity to make an outsized
+      impact in a community that is currently underserved by the tools and benchmarks we take for granted in English.
+    </p>
+
+    <p>
+      If you are working on multilingual NLP or low-resource methods, I encourage you to add Indonesian
+      to your evaluation suite. You might be surprised by what you learn.
+    </p>
+
+    <!-- ══ OPTIONAL: footnotes ══ -->
+    <div class="footnotes">
+      <ol>
+        <li id="fn1">IndoBERT: Wilie et al. (2020). <em>IndoNLU Benchmark: A New Benchmark for Indonesian NLP.</em> AACL-IJCNLP. <a href="#fnref1">↑</a></li>
+        <li id="fn2">For a comprehensive survey, see: Aji et al. (2022). <em>One Country, 700+ Languages: NLP Challenges for Underrepresented Languages and Dialects in Indonesia.</em> ACL. <a href="#fnref2">↑</a></li>
+      </ol>
+    </div>
+
+  </div>
+  <!-- ══ END post-body ══ -->
+
+  <!-- Share row -->
+  <div class="post-share">
+    <span class="share-label">Share</span>
+    <!-- These URLs are auto-filled by JS below; leave them as-is -->
+    <a href="#" class="share-btn" id="share-twitter" target="_blank" rel="noopener">
+      <i class="ti ti-brand-twitter" style="font-size:13px"></i> Twitter
+    </a>
+    <a href="#" class="share-btn" id="share-linkedin" target="_blank" rel="noopener">
+      <i class="ti ti-brand-linkedin" style="font-size:13px"></i> LinkedIn
+    </a>
+    <a href="#" class="share-btn" id="share-email">
+      <i class="ti ti-mail" style="font-size:13px"></i> Email
+    </a>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p class="footer-copy">&copy; 2025 Dr. Your Name &middot; All rights reserved.</p>
+  <div class="footer-links">
+    <a href="mailto:yourname@ub.ac.id">Email</a>
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+    <a href="../files/cv.pdf" target="_blank">CV</a>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Back to top"><i class="ti ti-arrow-up" aria-hidden="true"></i></button>
+
+<script src="../js/main.js"></script>
+<script>
+  // Auto-fill share links with current page URL and title
+  const url   = encodeURIComponent(window.location.href);
+  const title = encodeURIComponent(document.title);
+  document.getElementById('share-twitter').href  = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+  document.getElementById('share-linkedin').href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+  document.getElementById('share-email').href    = `mailto:?subject=${title}&body=${url}`;
+</script>
+</body>
+</html>
