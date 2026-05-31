@@ -578,3 +578,36 @@ nav {
   .service-grid { grid-template-columns: 1fr; }
   .service-block--full { grid-column: auto; }
 }
+
+/* ── DISSERTATION ── */
+.hero-dissertation {
+  margin-bottom: 2rem;
+}
+
+.dissertation-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.4rem;
+}
+
+.dissertation-link {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.dissertation-link:hover {
+  color: var(--accent-m);
+  border-bottom-color: var(--accent-m);
+}
